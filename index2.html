@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amack Detail - Precision. Protection. Profit.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00d4ff, #0099ff, #0066ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, #0066ff);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 102, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            animation: pulse 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #ffffff, #0066ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+            line-height: 1.1;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+            100% { text-shadow: 0 0 40px rgba(0, 212, 255, 0.8); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .hero-tagline {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(45deg, #00d4ff, #0066ff);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.5);
+            background: linear-gradient(45deg, #0066ff, #00d4ff);
+        }
+
+        /* Floating particles */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00d4ff;
+            border-radius: 50%;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 5% 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #00d4ff, #ffffff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 102, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .service-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #00d4ff;
+            margin-bottom: 2rem;
+        }
+
+        .service-button {
+            background: linear-gradient(45deg, #00d4ff, #0066ff);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #00d4ff;
+        }
+
+        .contact-option {
+            display: block;
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(0, 102, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: white;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 15px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .contact-option:hover {
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.2), rgba(0, 102, 255, 0.1));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+        }
+
+        /* Quote Form Styles */
+        .quote-form {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 102, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin: 4rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #00d4ff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .required {
+            color: #ff4444;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .submit-button {
+            background: linear-gradient(45deg, #00d4ff, #0066ff);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 102, 255, 0.02));
+            padding: 6rem 5%;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .legacy-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #00d4ff;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Fleet Section */
+        .fleet {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+        }
+
+        .fleet-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .value-prop {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 102, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .value-prop h3 {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 102, 255, 0.05));
+            padding: 6rem 5%;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-item {
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">AMACK DETAIL</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#fleet">Fleet Solutions</a></li>
+                <li><a href="#about">Legacy</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="particles"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">AMACK DETAIL</h1>
+            <p class="hero-subtitle">Premium Vehicle Transformation Since 1985</p>
+            <div class="hero-tagline">Precision. Protection. Profit.</div>
+            <a href="#services" class="cta-button">Transform Your Fleet</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title fade-in">Premium Services</h2>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">🏠</div>
+                <h3 class="service-title">Interior Reset</h3>
+                <p class="service-description">Thorough cleaning, restoration, and protection of vehicle interiors with meticulous attention to every detail.</p>
+                <div class="service-price">$150 - $350+</div>
+                <button class="service-button" onclick="openBookingModal('Interior Reset')">Book Interior Reset</button>
+            </div>
+            
+            <div class="service-card fade-in">
+                <div class="service-icon">🛡️</div>
+                <h3 class="service-title">Exterior Armor</h3>
+                <p class="service-description">Professional cleaning, polishing, and safeguarding with ceramic coating and PPF preparation.</p>
+                <div class="service-price">$100 - $600+</div>
+                <button class="service-button" onclick="openBookingModal('Exterior Armor')">Book Exterior Armor</button>
+            </div>
+            
+            <div class="service-card fade-in">
+                <div class="service-icon">🚗</div>
+                <h3 class="service-title">Fleet Contracts</h3>
+                <p class="service-description">On-site detailing services to optimize lot readiness and fleet presentation for dealerships.</p>
+                <div class="service-price">$2,000/month</div>
+                <button class="service-button" onclick="openBookingModal('Fleet Contract')">Partner With Us</button>
+            </div>
+        </div>
+
+        <!-- Free Quote Form -->
+        <div class="quote-form fade-in">
+            <h2 class="section-title" style="margin-bottom: 2rem; color: #00d4ff;">Get a Free Quote!</h2>
+            <form id="quoteForm" onsubmit="submitQuote(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address1">Address Line 1 <span class="required">*</span></label>
+                    <input type="text" id="address1" name="address1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address2">Address Line 2</label>
+                    <input type="text" id="address2" name="address2">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City <span class="required">*</span></label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State <span class="required">*</span></label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="postalCode">Postal Code <span class="required">*</span></label>
+                        <input type="text" id="postalCode" name="postalCode" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="vehicle">Year, Make, Model</label>
+                        <input type="text" id="vehicle" name="vehicle" placeholder="e.g., 2022 Honda Accord">
+                    </div>
+                    <div class="form-group">
+                        <label for="licensePlate">License Plate Number</label>
+                        <input type="text" id="licensePlate" name="licensePlate">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>I'm interested in:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="interiorDetail" name="services" value="Interior Detail">
+                            <label for="interiorDetail">Interior Detail</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="exteriorDetail" name="services" value="Exterior Detail">
+                            <label for="exteriorDetail">Exterior Detail</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="fullDetail" name="services" value="Full Detail">
+                            <label for="fullDetail">Full Detail</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="engineBay" name="services" value="Engine Bay Cleaning">
+                            <label for="engineBay">Engine Bay Cleaning</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="headlight" name="services" value="Headlight Restoration">
+                            <label for="headlight">Headlight Restoration</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="smokeOdor" name="services" value="Smoke/Odor Removal">
+                            <label for="smokeOdor">Smoke/Odor Removal</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="ceramic" name="services" value="Ceramic Coating">
+                            <label for="ceramic">Ceramic Coating</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="paintCorrection" name="services" value="Paint Correction">
+                            <label for="paintCorrection">Paint Correction</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="tarRemoval" name="services" value="Tar Removal">
+                            <label for="tarRemoval">Tar Removal</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="hearAbout">How did you hear about us? <span class="required">*</span></label>
+                    <select id="hearAbout" name="hearAbout" required>
+                        <option value="">Please select...</option>
+                        <option value="Van">Van</option>
+                        <option value="Charles, the owner">Charles, the owner</option>
+                        <option value="Someone referred me">Someone referred me</option>
+                        <option value="Google Search">Google Search</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="Groupon">Groupon</option>
+                        <option value="Someone who works here">Someone who works here</option>
+                        <option value="Nextdoor">Nextdoor</option>
+                        <option value="Mailer">Mailer</option>
+                        <option value="Doorhanger">Doorhanger</option>
+                        <option value="Car show/event">Car show/event</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="preferredDate">Preferred Date & Time</label>
+                    <input type="datetime-local" id="preferredDate" name="preferredDate">
+                </div>
+
+                <div class="form-group">
+                    <label for="comments">Additional Comments/Concerns</label>
+                    <textarea id="comments" name="comments" rows="4" placeholder="Tell us about any specific needs or concerns..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Get My FREE Quote!</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-container">
+            <h2 class="section-title fade-in">Built From Akron's Legacy</h2>
+            <p class="fade-in" style="font-size: 1.3rem; line-height: 1.8; margin-bottom: 3rem;">
+                Founded by Charles R. Mack Jr. and proudly led by Charles L. Mack III, Amack Detail brings over four decades of hands-on detailing mastery to every vehicle we touch. We don't just clean—we transform, enhance value, and elevate customer satisfaction.
+            </p>
+            
+            <div class="legacy-stats">
+                <div class="stat fade-in">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-label">Years of Excellence</span>
+                </div>
+                <div class="stat fade-in">
+                    <span class="stat-number">10</span>
+                    <span class="stat-label">Target Dealerships</span>
+                </div>
+                <div class="stat fade-in">
+                    <span class="stat-number">$20K</span>
+                    <span class="stat-label">Monthly Revenue Goal</span>
+                </div>
+                <div class="stat fade-in">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">CSI Impact</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="fleet" class="fleet">
+        <div class="fleet-container">
+            <h2 class="section-title fade-in">Fleet Solutions That Drive Results</h2>
+            <p class="fade-in" style="font-size: 1.3rem; margin-bottom: 3rem;">
+                Partner with Amack Detail to raise your CSI, accelerate sales, and maximize manufacturer rewards.
+            </p>
+            
+            <div class="value-props">
+                <div class="value-prop fade-in">
+                    <h3>🎯 CSI Impact</h3>
+                    <p>Elevated Customer Satisfaction Index scores drive repeat business, better reviews, and manufacturer rewards.</p>
+                </div>
+                <div class="value-prop fade-in">
+                    <h3>⚡ Instant Quotes</h3>
+                    <p>Streamlined pricing via on-site assessment tools for immediate service deployment.</p>
+                </div>
+                <div class="value-prop fade-in">
+                    <h3>🌟 Franchise Model</h3>
+                    <p>License our proven system for $5,000/year, including comprehensive training and supplier networks.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <a href="#contact" class="cta-button">Schedule Free Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="section-title fade-in">Ready to Transform Your Fleet?</h2>
+            <p class="fade-in" style="font-size: 1.2rem; margin-bottom: 3rem;">
+                Contact us today for your free 2-vehicle demonstration and discover the Amack Detail difference.
+            </p>
+            
+            <div class="contact-info">
+                <div class="contact-item fade-in">
+                    <h3>📍 Location</h3>
+                    <p>953 E. Wilbeth Rd.<br>Akron, OH 44306</p>
+                </div>
+                <div class="contact-item fade-in">
+                    <h3>📞 Phone</h3>
+                    <p><a href="tel:234-327-2486" style="color: #00d4ff; text-decoration: none;">(234) 327-2486</a><br>Mon - Fri: Business Hours</p>
+                </div>
+                <div class="contact-item fade-in">
+                    <h3>💼 Partnership</h3>
+                    <p>Ready to boost your CSI?<br>Let's discuss your fleet needs.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <p style="font-size: 1.5rem; font-weight: 700; color: #00d4ff;">Act Today!</p>
+                <p>We return cars to a comfortable, attractive condition with long-lasting protection.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" style="color: #00d4ff; text-align: center; margin-bottom: 2rem;"></h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Choose how you'd like to contact us:</p>
+            
+            <a href="tel:234-327-2486" class="contact-option">
+                📞 Call Us: (234) 327-2486
+            </a>
+            
+            <a href="sms:234-327-2486?body=Hi%20Amack%20Detail%2C%20I%27m%20interested%20in%20scheduling%20a%20service.%20Please%20contact%20me%20to%20discuss%20details." class="contact-option">
+                💬 Text Us: (234) 327-2486
+            </a>
+            
+            <a id="emailLink" href="#" class="contact-option">
+                ✉️ Email Us
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Particle animation
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Scroll animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Service booking function
+        function openBookingModal(serviceName) {
+            const modal = document.getElementById('bookingModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const emailLink = document.getElementById('emailLink');
+            
+            modalTitle.textContent = `Book ${serviceName}`;
+            
+            const emailBody = encodeURIComponent(`Hello Amack Detail,
+
+I'm interested in booking a ${serviceName} service. Please contact me to schedule an appointment and provide pricing details.
+
+Thank you!`);
+            
+            emailLink.href = `mailto:computerworldmoderninc@gmail.com?subject=${encodeURIComponent(`${serviceName} Booking Request`)}&body=${emailBody}`;
+            
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('bookingModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Quote form submission
+        function submitQuote(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = {};
+            
+            // Get all form data
+            for (let [key, value] of formData.entries()) {
+                if (key === 'services') {
+                    if (!data.services) data.services = [];
+                    data.services.push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Get all selected services
+            const serviceCheckboxes = document.querySelectorAll('input[name="services"]:checked');
+            const selectedServices = Array.from(serviceCheckboxes).map(cb => cb.value);
+            
+            // Create email content
+            const emailSubject = encodeURIComponent('Free Quote Request - Amack Detail');
+            const emailBody = encodeURIComponent(`NEW QUOTE REQUEST
+
+Customer Information:
+Name: ${data.firstName} ${data.lastName}
+Phone: ${data.phone}
+Email: ${data.email}
+
+Address:
+${data.address1}
+${data.address2 ? data.address2 : ''}
+${data.city}, ${data.state} ${data.postalCode}
+
+${data.company ? `Company: ${data.company}` : ''}
+${data.vehicle ? `Vehicle: ${data.vehicle}` : ''}
+${data.licensePlate ? `License Plate: ${data.licensePlate}` : ''}
+
+Services Interested In:
+${selectedServices.length > 0 ? selectedServices.join(', ') : 'None selected'}
+
+How they heard about us: ${data.hearAbout}
+${data.preferredDate ? `Preferred Date/Time: ${data.preferredDate}` : ''}
+
+Additional Comments:
+${data.comments || 'None'}
+
+Please contact this customer promptly for their free quote!`);
+
+            // Create text message content
+            const textBody = encodeURIComponent(`New Quote Request from ${data.firstName} ${data.lastName}. Phone: ${data.phone}. Services: ${selectedServices.join(', ')}. Please follow up!`);
+            
+            // Show options modal for submission
+            showSubmissionOptions(emailSubject, emailBody, textBody, data.phone);
+        }
+
+        function showSubmissionOptions(emailSubject, emailBody, textBody, phone) {
+            const modal = document.getElementById('bookingModal');
+            const modalContent = modal.querySelector('.modal-content');
+            
+            modalContent.innerHTML = `
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 style="color: #00d4ff; text-align: center; margin-bottom: 2rem;">Quote Submitted!</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">Your quote request has been prepared. Choose how you'd like us to receive it:</p>
+                
+                <a href="mailto:computerworldmoderninc@gmail.com?subject=${emailSubject}&body=${emailBody}" class="contact-option">
+                    ✉️ Send via Email
+                </a>
+                
+                <a href="sms:234-327-2486?body=${textBody}" class="contact-option">
+                    💬 Send via Text
+                </a>
+                
+                <a href="tel:234-327-2486" class="contact-option">
+                    📞 Call to Discuss: (234) 327-2486
+                </a>
+                
+                <div style="text-align: center; margin-top: 2rem; padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 10px;">
+                    <p style="color: #00d4ff; font-weight: bold;">We'll contact you within 24 hours!</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">Phone: (234) 327-2486 | Email: computerworldmoderninc@gmail.com</p>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+            
+            // Reset form
+            document.getElementById('quoteForm').reset();
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize animations
+        window.addEventListener('load', () => {
+            createParticles();
+            handleScrollAnimations();
+        });
+
+        window.addEventListener('scroll', handleScrollAnimations);
+
+        // Navigation background change on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
