@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amack Mobile - Total Paint Correction Experts | 40+ Years Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff6b35, #f7931e, #ffcc02);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b35, #ffcc02);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #ff6b35;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(247, 147, 30, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            animation: pulse 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 1000px;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b35, #ffffff, #ffcc02);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+            line-height: 1.1;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 20px rgba(255, 107, 53, 0.5); }
+            100% { text-shadow: 0 0 40px rgba(255, 107, 53, 0.8); }
+        }
+
+        .hero-subtitle {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            font-weight: 600;
+            color: #ff6b35;
+        }
+
+        .hero-tagline {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .hero-experience {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ffcc02;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefit {
+            text-align: center;
+            background: rgba(255, 107, 53, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .benefit:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 107, 53, 0.15);
+            border-color: rgba(255, 107, 53, 0.4);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .benefit-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ff6b35;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 1rem 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.5);
+            background: linear-gradient(45deg, #f7931e, #ff6b35);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid #ff6b35;
+        }
+
+        .cta-secondary:hover {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+        }
+
+        /* Service Area Banner */
+        .service-area {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        .service-area h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-area p {
+            font-size: 1.1rem;
+        }
+
+        /* Flagship Service Section */
+        .flagship-service {
+            padding: 8rem 5% 6rem;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(247, 147, 30, 0.02));
+        }
+
+        .flagship-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b35, #ffffff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 4rem;
+            opacity: 0.9;
+            color: #ff6b35;
+            font-weight: 600;
+        }
+
+        .flagship-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin: 4rem 0;
+            align-items: center;
+        }
+
+        .flagship-content {
+            padding: 2rem;
+        }
+
+        .flagship-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ff6b35;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .flagship-description {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .process-steps {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .process-steps li {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+            font-size: 1.1rem;
+        }
+
+        .step-number {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .flagship-visual {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.05));
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flagship-visual::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .visual-icon {
+            font-size: 8rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #ff6b35, #ffcc02);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .visual-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff6b35;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Services Grid */
+        .services {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.05));
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card.flagship {
+            border: 2px solid #ff6b35;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(247, 147, 30, 0.08));
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 107, 53, 0.5);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ff6b35;
+        }
+
+        .flagship-badge {
+            background: linear-gradient(45deg, #ff6b35, #ffcc02);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+        }
+
+        .service-features li::before {
+            content: '✓ ';
+            color: #ff6b35;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .service-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ff6b35;
+            margin-bottom: 2rem;
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+
+        .service-button {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+        }
+
+        .service-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Coverage Area Section */
+        .coverage-area {
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+            padding: 6rem 5%;
+        }
+
+        .coverage-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .counties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .county-card {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.05));
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .county-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 107, 53, 0.4);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(247, 147, 30, 0.08));
+        }
+
+        .county-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .county-areas {
+            font-size: 1rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.05));
+            padding: 6rem 5%;
+        }
+
+        .experience-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .experience-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .stat-card {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #ff6b35;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.3rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.05));
+            border-radius: 15px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(247, 147, 30, 0.1));
+        }
+
+        .contact-card h3 {
+            color: #ff6b35;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #ff6b35;
+        }
+
+        .contact-option {
+            display: block;
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.05));
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            color: white;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 15px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .contact-option:hover {
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.2), rgba(247, 147, 30, 0.1));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-experience {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .flagship-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-benefits {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .cta-button {
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
+                margin: 0.5rem;
+                display: block;
+                text-align: center;
+            }
+
+            .flagship-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating elements */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff6b35;
+            border-radius: 50%;
+            animation: float 8s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">AMACK MOBILE</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#flagship">Paint Correction</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#coverage">Coverage</a></li>
+                <li><a href="#contact">Book Now</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="particles"></div>
+        <div class="hero-content">
+            <div class="hero-experience">40+ Years Experience</div>
+            <h1 class="hero-title">TOTAL PAINT CORRECTION EXPERTS</h1>
+            <p class="hero-subtitle">Mobile Paint Restoration Specialists</p>
+            <p class="hero-tagline">Professional machine correction, ceramic coating protection, and immaculate finish restoration - delivered to your location</p>
+            
+            <div class="hero-benefits">
+                <div class="benefit">
+                    <span class="benefit-icon">🚐</span>
+                    <span class="benefit-text">Mobile Service</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">⚙️</span>
+                    <span class="benefit-text">Machine Specialist</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">🛡️</span>
+                    <span class="benefit-text">Ceramic Coating</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">✨</span>
+                    <span class="benefit-text">Immaculate Finish</span>
+                </div>
+            </div>
+            
+            <div>
+                <a href="#contact" class="cta-button">Get Paint Correction Quote</a>
+                <a href="tel:234-327-2486" class="cta-button cta-secondary">Call (234) 327-2486</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="service-area">
+        <h3>Serving Summit, Medina, Portage, Cuyahoga & Stark Counties</h3>
+        <p>Ohio's premier mobile paint correction specialists - we bring expertise to your location!</p>
+    </div>
+
+    <section id="flagship" class="flagship-service">
+        <div class="flagship-container">
+            <h2 class="section-title fade-in">Total Paint Correction Expert</h2>
+            <p class="section-subtitle fade-in">The Ultimate Paint Restoration Experience</p>
+            
+            <div class="flagship-grid">
+                <div class="flagship-content fade-in">
+                    <h3 class="flagship-title">Complete Paint Restoration & Protection System</h3>
+                    <p class="flagship-description">Our flagship service combines decades of expertise with cutting-edge techniques to transform your vehicle's paint to showroom condition and beyond.</p>
+                    
+                    <ol class="process-steps">
+                        <li><span class="step-number">1</span> <strong>Prepare & Wash:</strong> Thorough decontamination wash</li>
+                        <li><span class="step-number">2</span> <strong>Clay Bar Treatment:</strong> Remove embedded contaminants</li>
+                        <li><span class="step-number">3</span> <strong>Contaminant Removal:</strong> Tar removal, rail dust, industrial fallout</li>
+                        <li><span class="step-number">4</span> <strong>Machine Correction:</strong> Expert paint correction and restoration</li>
+                        <li><span class="step-number">5</span> <strong>Defect Removal:</strong> Eliminate scratches, etch marks, swirl marks</li>
+                        <li><span class="step-number">6</span> <strong>Acid Rain Treatment:</strong> Restore acid rain damage</li>
+                        <li><span class="step-number">7</span> <strong>Final Polish:</strong> Achieve immaculate paint finish</li>
+                        <li><span class="step-number">8</span> <strong>Ceramic Coating:</strong> Long-lasting protection application</li>
+                    </ol>
+                    
+                    <a href="#contact" class="cta-button">Book Your Transformation</a>
+                </div>
+                
+                <div class="flagship-visual fade-in">
+                    <div class="visual-icon">🎯</div>
+                    <div class="visual-text">Expert Machine Specialist<br>Paint Correction<br>& Ceramic Protection</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title fade-in">Professional Mobile Services</h2>
+        <p class="section-subtitle fade-in">Comprehensive paint care and detailing delivered to your location</p>
+        
+        <div class="services-grid">
+            <div class="service-card flagship fade-in">
+                <div class="flagship-badge">Flagship Service</div>
+                <span class="service-icon">🎯</span>
+                <h3 class="service-title">Total Paint Correction Expert</h3>
+                <p class="service-description">Our premier paint restoration system - the most comprehensive mobile paint correction service available.</p>
+                
+                <ul class="service-features">
+                    <li>Complete decontamination wash & clay bar</li>
+                    <li>Tar removal, rail dust, industrial fallout elimination</li>
+                    <li>Expert machine paint correction & restoration</li>
+                    <li>Scratch, etch mark, swirl mark removal</li>
+                    <li>Acid rain damage restoration</li>
+                    <li>Immaculate finish polishing</li>
+                    <li>Premium ceramic coating application</li>
+                    <li>Long-lasting protection guarantee</li>
+                </ul>
+                
+                <div class="service-price">
+                    $800 - $1,500
+                    <div class="price-note">*Based on vehicle size and condition</div>
+                </div>
+                <button class="service-button" onclick="openBookingModal('Total Paint Correction Expert')">Get Expert Correction</button>
+            </div>
+            
+            <div class="service-card fade-in">
+                <span class="service-icon">💎</span>
+                <h3 class="service-title">Premium Paint Enhancement</h3>
+                <p class="service-description">Professional paint improvement with protection for vehicles in good condition.</p>
+                
+                <ul class="service-features">
+                    <li>Thorough wash and decontamination</li>
+                    <li>Clay bar contaminant removal</li>
+                    <li>Single-stage machine polishing</li>
+                    <li>Minor scratch and swirl removal</li>
+                    <li>Paint sealant or wax protection</li>
+                    <li>Wheel and tire detailing</li>
+                </ul>
+                
+                <div class="service-price">
+                    $400 - $700
+                    <div class="price-note">*Perfect for well-maintained vehicles</div>
+                </div>
+                <button class="service-button" onclick="openBookingModal('Premium Paint Enhancement')">Book Enhancement</button>
+            </div>
+            
+            <div class="service-card fade-in">
+                <span class="service-icon">🛡️</span>
+                <h3 class="service-title">Ceramic Coating Protection</h3>
+                <p class="service-description">Long-lasting ceramic protection systems with various durability options.</p>
+                
+                <ul class="service-features">
+                    <li>1-Year Ceramic Coating - $400</li>
+                    <li>2-Year Premium Ceramic - $600</li>
+                    <li>5-Year Graphene Coating - $1,200</li>
+                    <li>Paint preparation included</li>
+                    <li>Hydrophobic protection</li>
+                    <li>UV and chemical resistance</li>
+                </ul>
+                
+                <div class="service-price">
+                    $400 - $1,200
+                    <div class="price-note">*Investment in protection</div>
+                </div>
+                <button class="service-button" onclick="openBookingModal('Ceramic Coating Protection')">Protect Your Investment</button>
+            </div>
+            
+            <div class="service-card fade-in">
+                <span class="service-icon">🏠</span>
+                <h3 class="service-title">Interior Deep Restoration</h3>
+                <p class="service-description">Complete interior cleaning and restoration with professional equipment.</p>
+                
+                <ul class="service-features">
+                    <li>Steam cleaning and extraction</li>
+                    <li>Leather conditioning and protection</li>
+                    <li>Stain and odor removal</li>
+                    <li>Dashboard and trim restoration</li>
+                    <li>Pet hair removal specialist</li>
+                    <li>Smoke odor elimination</li>
+                </ul>
+                
+                <div class="service-price">
+                    $250 - $500
+                    <div class="price-note">*Based on vehicle size and condition</div>
+                </div>
+                <button class="service-button" onclick="openBookingModal('Interior Deep Restoration')">Restore Interior</button>
+            </div>
+            
+            <div class="service-card fade-in">
+                <span class="service-icon">⚡</span>
+                <h3 class="service-title">Maintenance Services</h3>
+                <p class="service-description">Regular maintenance to keep your vehicle looking its best between major services.</p>
+                
+                <ul class="service-features">
+                    <li>Maintenance washes - $75-$125</li>
+                    <li>Paint touch-up services</li>
+                    <li>Headlight restoration - $125</li>
+                    <li>Engine bay cleaning - $150</li>
+                    <li>Tire and wheel detailing</li>
+                    <li>Quick interior refresh</li>
+                </ul>
+                
+                <div class="service-price">
+                    $75 - $200
+                    <div class="price-note">*Regular maintenance plans available</div>
+                </div>
+                <button class="service-button" onclick="openBookingModal('Maintenance Services')">Schedule Maintenance</button>
+            </div>
+            
+            <div class="service-card fade-in">
+                <span class="service-icon">🔧</span>
+                <h3 class="service-title">Specialty Services</h3>
+                <p class="service-description">Specialized treatments for unique vehicle needs and restoration challenges.</p>
+                
+                <ul class="service-features">
+                    <li>Oxidation and fade restoration</li>
+                    <li>Water spot removal treatment</li>
+                    <li>Tree sap and tar elimination</li>
+                    <li>Paint transfer removal</li>
+                    <li>Convertible top care</li>
+                    <li>Commercial fleet services</li>
+                </ul>
+                
+                <div class="service-price">
+                    Custom Quote
+                    <div class="price-note">*Specialized solutions for unique needs</div>
+                </div>
+                <button class="service-button" onclick="openBookingModal('Specialty Services')">Get Custom Quote</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="coverage" class="coverage-area">
+        <div class="coverage-container">
+            <h2 class="section-title fade-in">Service Coverage Areas</h2>
+            <p class="section-subtitle fade-in">Bringing expert paint correction to communities across Northeast Ohio</p>
+            
+            <div class="counties-grid">
+                <div class="county-card fade-in">
+                    <h3 class="county-name">Summit County</h3>
+                    <div class="county-areas">Akron, Barberton, Cuyahoga Falls, Stow, Hudson, Green, Copley, Fairlawn, Bath, Tallmadge</div>
+                </div>
+                
+                <div class="county-card fade-in">
+                    <h3 class="county-name">Medina County</h3>
+                    <div class="county-areas">Medina, Wadsworth, Brunswick, Strongsville, Hinckley, Montville, Sharon, Granger</div>
+                </div>
+                
+                <div class="county-card fade-in">
+                    <h3 class="county-name">Portage County</h3>
+                    <div class="county-areas">Kent, Ravenna, Streetsboro, Aurora, Mantua, Windham, Garrettsville, Hiram</div>
+                </div>
+                
+                <div class="county-card fade-in">
+                    <h3 class="county-name">Cuyahoga County</h3>
+                    <div class="county-areas">Cleveland, Parma, Lakewood, Euclid, Strongsville, Middleburg Heights, North Royalton, Brecksville</div>
+                </div>
+                
+                <div class="county-card fade-in">
+                    <h3 class="county-name">Stark County</h3>
+                    <div class="county-areas">Canton, Massillon, Alliance, North Canton, Jackson, Green, Louisville, Hartville</div>
+                </div>
+            </div>
+            
+            <div style="background: rgba(255, 107, 53, 0.1); padding: 2rem; border-radius: 15px; margin: 3rem 0; text-align: center;">
+                <h3 style="color: #ff6b35; margin-bottom: 1rem; font-size: 1.8rem;">Mobile Service Excellence</h3>
+                <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 1rem;">
+                    We bring our fully equipped mobile units directly to your location - whether that's your home, office, or business. No need to drive anywhere or wait at a shop.
+                </p>
+                <p style="font-size: 1.1rem; opacity: 0.9;">
+                    <strong>Service outside these areas?</strong> Call us - we may still be able to accommodate special requests for our flagship paint correction services.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience">
+        <div class="experience-container">
+            <h2 class="section-title fade-in">Four Decades of Paint Excellence</h2>
+            <p class="section-subtitle fade-in">The Amack family legacy in automotive care</p>
+            
+            <div class="experience-stats">
+                <div class="stat-card fade-in">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                
+                <div class="stat-card fade-in">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Counties Served</div>
+                </div>
+                
+                <div class="stat-card fade-in">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Mobile Service</div>
+                </div>
+            </div>
+            
+            <div style="max-width: 800px; margin: 0 auto; text-align: left; background: rgba(255, 107, 53, 0.1); padding: 3rem; border-radius: 20px;">
+                <h3 style="color: #ff6b35; font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">The Amack Difference</h3>
+                
+                <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                    Founded by <strong>Charles R. Mack Jr.</strong> and now led by <strong>Charles L. Mack III</strong>, Amack Mobile represents four decades of continuous innovation in automotive care. We've evolved from traditional detailing to become Northeast Ohio's premier mobile paint correction specialists.
+                </p>
+                
+                <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                    Our expertise in machine paint correction, contaminant removal, and ceramic coating application sets us apart. We don't just clean your car - we restore and protect your investment with precision techniques developed over decades of experience.
+                </p>
+                
+                <p style="font-size: 1.1rem; line-height: 1.6; color: #ff6b35; font-weight: 600; text-align: center;">
+                    "Excellence isn't just our standard - it's our family legacy."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="section-title fade-in">Ready for Expert Paint Correction?</h2>
+            <p class="section-subtitle fade-in">Get your free consultation and transform your vehicle today</p>
+            
+            <div class="contact-options">
+                <a href="tel:234-327-2486" class="contact-card fade-in">
+                    <span class="icon">📞</span>
+                    <h3>Call for Expert Consultation</h3>
+                    <p>(234) 327-2486</p>
+                    <p>Mon-Fri: 8am-6pm<br>Saturday: 8am-4pm</p>
+                </a>
+                
+                <a href="sms:234-327-2486?body=Hi%20Amack%20Mobile%21%20I%27m%20interested%20in%20your%20Total%20Paint%20Correction%20Expert%20service.%20Please%20contact%20me%20for%20a%20consultation." class="contact-card fade-in">
+                    <span class="icon">💬</span>
+                    <h3>Text for Quick Response</h3>
+                    <p>(234) 327-2486</p>
+                    <p>Fast consultation<br>Easy scheduling</p>
+                </a>
+                
+                <a href="mailto:computerworldmoderninc@gmail.com?subject=Paint%20Correction%20Consultation&body=Hi%20Amack%20Mobile%21%0A%0AI%27m%20interested%20in%20your%20Total%20Paint%20Correction%20Expert%20service.%20Please%20contact%20me%20to%20discuss%20my%20vehicle%27s%20needs%20and%20schedule%20a%20consultation.%0A%0AThank%20you%21" class="contact-card fade-in">
+                    <span class="icon">✉️</span>
+                    <h3>Email Consultation</h3>
+                    <p>Professional Assessment</p>
+                    <p>Detailed service info<br>Custom recommendations</p>
+                </a>
+            </div>
+            
+            <div style="margin-top: 4rem; text-align: center; background: linear-gradient(45deg, rgba(255, 107, 53, 0.15), rgba(247, 147, 30, 0.1)); padding: 3rem; border-radius: 20px;">
+                <h3 style="color: #ff6b35; margin-bottom: 1.5rem; font-size: 2rem;">Why Choose Our Paint Correction?</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div>
+                        <h4 style="color: #ffcc02; margin-bottom: 0.5rem;">Machine Specialist Expertise</h4>
+                        <p>Professional-grade equipment and techniques for superior results</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #ffcc02; margin-bottom: 0.5rem;">Complete Restoration</h4>
+                        <p>From contamination removal to ceramic protection</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #ffcc02; margin-bottom: 0.5rem;">Mobile Convenience</h4>
+                        <p>Full service at your location with professional results</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="tel:234-327-2486" class="cta-button">Call (234) 327-2486 for Expert Service</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" style="color: #ff6b35; text-align: center; margin-bottom: 2rem;"></h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Ready to transform your vehicle? Choose your preferred method to get started:</p>
+            
+            <a href="tel:234-327-2486" class="contact-option">
+                📞 Call Expert: (234) 327-2486
+            </a>
+            
+            <a href="sms:234-327-2486?body=Hi%20Amack%20Mobile%21%20I%27d%20like%20to%20schedule%20your%20paint%20correction%20service.%20Please%20contact%20me%20for%20consultation." class="contact-option">
+                💬 Text: (234) 327-2486
+            </a>
+        
+            <a id="emailLink" href="mailto:computerworldmoderninc@gmail.com?subject=Paint%20Correction%20Service&body=Hi%20Amack%20Mobile%21%0A%0AI%27d%20like%20to%20schedule%20your%20paint%20correction%20service.%20Please%20contact%20me%20to%20discuss%20my%20vehicle%27s%20needs.%0A%0AThank%20you%21" class="contact-option">
+                ✉️ Email Consultation
+            </a>
+            
+            <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: rgba(255, 107, 53, 0.1); border-radius: 10px;">
+                <p style="color: #ff6b35; font-weight: bold; font-size: 1.1rem;">40+ Years of Paint Correction Excellence</p>
+                <p style="font-size: 1rem; opacity: 0.8; margin-top: 0.5rem;">Expert mobile service delivered to your location</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Particle animation
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            if (!particlesContainer) return;
+            
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Scroll animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Service booking function
+        function openBookingModal(serviceName) {
+            const modal = document.getElementById('bookingModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const emailLink = document.getElementById('emailLink');
+            
+            modalTitle.textContent = `Book ${serviceName}`;
+            
+            const emailBody = encodeURIComponent(`Hi Amack Mobile!
+
+I'm interested in booking your ${serviceName} service at my location.
+
+Please contact me to schedule a consultation and provide detailed information about the paint correction process for my vehicle.
+
+Thank you for your expertise!`);
+            
+            emailLink.href = `mailto:computerworldmoderninc@gmail.com?subject=${encodeURIComponent(`Paint Correction Service - ${serviceName}`)}&body=${emailBody}`;
+            
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('bookingModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Initialize animations
+        window.addEventListener('load', () => {
+            createParticles();
+            handleScrollAnimations();
+        });
+
+        window.addEventListener('scroll', handleScrollAnimations);
+
+        // Navigation background change on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
