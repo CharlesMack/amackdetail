@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amack Mobile Detailing - We Come to You!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00d4ff, #0099ff, #0066ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, #0066ff);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #00d4ff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 102, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            animation: pulse 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #ffffff, #0066ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+            line-height: 1.1;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+            100% { text-shadow: 0 0 40px rgba(0, 212, 255, 0.8); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .hero-tagline {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0 3rem;
+            flex-wrap: wrap;
+        }
+
+        .benefit {
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .benefit-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #00d4ff;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: linear-gradient(45deg, #00d4ff, #0066ff);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 1rem 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.5);
+            background: linear-gradient(45deg, #0066ff, #00d4ff);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid #00d4ff;
+        }
+
+        .cta-secondary:hover {
+            background: linear-gradient(45deg, #00d4ff, #0066ff);
+        }
+
+        /* Service Area Banner */
+        .service-area {
+            background: linear-gradient(45deg, #00d4ff, #0066ff);
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        .service-area h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-area p {
+            font-size: 1.1rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 5% 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #ffffff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 4rem;
+            opacity: 0.9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 102, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .service-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .service-features li::before {
+            content: '✓ ';
+            color: #00d4ff;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .service-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #00d4ff;
+            margin-bottom: 2rem;
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+
+        .service-button {
+            background: linear-gradient(45deg, #00d4ff, #0066ff);
+            color: white;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+        }
+
+        .service-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Process Section */
+        .process {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 102, 255, 0.02));
+            padding: 6rem 5%;
+        }
+
+        .process-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .process-step {
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #00d4ff, #0066ff);
+            color: white;
+            border-radius: 50%;
+            line-height: 60px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Why Choose Us Section */
+        .why-us {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+        }
+
+        .why-us-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 102, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 102, 255, 0.05));
+            padding: 6rem 5%;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 102, 255, 0.05));
+            border-radius: 15px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 102, 255, 0.1));
+        }
+
+        .contact-card h3 {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Quote Form */
+        .quote-form {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 102, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin: 4rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #00d4ff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .required {
+            color: #ff4444;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .submit-button {
+            background: linear-gradient(45deg, #00d4ff, #0066ff);
+            color: white;
+            border: none;
+            padding: 1.5rem 3rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #00d4ff;
+        }
+
+        .contact-option {
+            display: block;
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(0, 102, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: white;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 15px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .contact-option:hover {
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.2), rgba(0, 102, 255, 0.1));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.5rem;
+            }
+            
+            .hero-benefits {
+                gap: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-benefits {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .benefit {
+                min-width: auto;
+            }
+
+            .cta-button {
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
+                margin: 0.5rem;
+                display: block;
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating elements */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00d4ff;
+            border-radius: 50%;
+            animation: float 8s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">AMACK MOBILE</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#contact">Book Now</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="particles"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">WE COME TO YOU</h1>
+            <p class="hero-subtitle">Professional Mobile Auto Detailing Service</p>
+            <div class="hero-tagline">Your Driveway. Our Expertise.</div>
+            
+            <div class="hero-benefits">
+                <div class="benefit">
+                    <span class="benefit-icon">🚐</span>
+                    <span class="benefit-text">Mobile Service</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">⭐</span>
+                    <span class="benefit-text">40+ Years Experience</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">💎</span>
+                    <span class="benefit-text">Premium Results</span>
+                </div>
+            </div>
+            
+            <div>
+                <a href="#contact" class="cta-button">Book Your Service</a>
+                <a href="tel:234-327-2486" class="cta-button cta-secondary">Call (234) 327-2486</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="service-area">
+        <h3>Serving Akron & Surrounding Areas</h3>
+        <p>Professional mobile detailing service - We bring our expertise to your location!</p>
+    </div>
+
+    <section id="services" class="services">
+        <h2 class="section-title fade-in">Premium Mobile Services</h2>
+        <p class="section-subtitle fade-in">Professional car care delivered to your driveway, office, or anywhere you need us</p>
+        
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <span class="service-icon">🏠</span>
+                <h3 class="service-title">Interior Deep Clean</h3>
+                <p class="service-description">Complete interior restoration with professional-grade equipment and products.</p>
+                
+                <ul class="service-features">
+                    <li>Vacuum all surfaces and crevices</li>
+                    <li>Steam clean carpets and upholstery</li>
+                    <li>Leather conditioning and protection</li>
+                    <li>Dashboard and trim restoration</li>
+                    <li>Window cleaning (inside)</li>
+                    <li>Odor elimination treatment</li>
+                </ul>
+                
+                <div class="service-price">
+                    $150 - $300
+                    <div class="price-note">*Based on vehicle size and condition</div>
+                </div>
+                <button class="service-button" onclick="openBookingModal('Interior Deep Clean')">Book This Service</button>
+            </div>
+            
+            <div class="service-card fade-in">
+                <span class="service-icon">✨</span>
+                <h3 class="service-title">Exterior Premium Wash</h3>
+                <p class="service-description">Professional exterior cleaning with paint protection and ceramic coating options.</p>
+                
+                <ul class="service-features">
+                    <li>Hand wash with premium products</li>
+                    <li>Clay bar treatment</li>
+                    <li>Paint correction and polishing</li>
+                    <li>Ceramic or graphene coating</li>
+                    <li>Wheel and tire detailing</li>
+                    <li>Chrome and trim restoration</li>
+                </ul>
+                
+                <div class="service-price">
+                    $200 - $500
+                    <div class="price-note">*Coating packages available</div>
+                </div>
+                <button class="service-button" onclick="openBookingModal('Exterior Premium Wash')">Book This Service</button>
+            </div>
+            
+            <div class="service-card fade-in">
+                <span class="service-icon">🚗</span>
+                <h3 class="service-title">Complete Detail Package</h3>
+                <p class="service-description">Our most popular service combining interior and exterior for total transformation.</p>
+                
+                <ul class="service-features">
+                    <li>Full interior deep clean</li>
+                    <li>Complete exterior premium wash</li>
+                    <li>Engine bay cleaning</li>
+                    <li>Headlight restoration</li>
+                    <li>Paint protection application</li>
+                    <li>6-month protection guarantee</li>
+                </ul>
+                
+                <div class="service-price">
+                    $350 - $750
+                    <div class="price-note">*Our most comprehensive package</div>
+                </div>
+                <button class="service-button" onclick="openBookingModal('Complete Detail Package')">Book This Service</button>
+            </div>
+        </div>
+
+        <!-- Additional Services -->
+        <div class="services-grid" style="margin-top: 3rem;">
+            <div class="service-card fade-in">
+                <span class="service-icon">🔧</span>
+                <h3 class="service-title">Add-On Services</h3>
+                <p class="service-description">Enhance your detail with these specialized treatments.</p>
+                
+                <ul class="service-features">
+                    <li>Headlight Restoration - $75</li>
+                    <li>Engine Bay Cleaning - $100</li>
+                    <li>Pet Hair Removal - $50</li>
+                    <li>Smoke Odor Treatment - $150</li>
+                    <li>Scratch Removal - $100+</li>
+                    <li>Convertible Top Care - $125</li>
+                </ul>
+                
+                <div class="service-price">
+                    À La Carte
+                    <div class="price-note">*Add to any package</div>
+                </div>
+                <button class="service-button" onclick="openBookingModal('Add-On Services')">Add Services</button>
+            </div>
+            
+            <div class="service-card fade-in">
+                <span class="service-icon">🛡️</span>
+                <h3 class="service-title">Protection Packages</h3>
+                <p class="service-description">Long-lasting protection for your investment.</p>
+                
+                <ul class="service-features">
+                    <li>Ceramic Coating (1 year) - $400</li>
+                    <li>Graphene Coating (2 years) - $600</li>
+                    <li>Paint Protection Film - $800+</li>
+                    <li>Interior Protection - $200</li>
+                    <li>Wheel Protection - $150</li>
+                    <li>Maintenance Plans Available</li>
+                </ul>
+                
+                <div class="service-price">
+                    Investment
+                    <div class="price-note">*Protect your vehicle's value</div>
+                </div>
+                <button class="service-button" onclick="openBookingModal('Protection Packages')">Protect Now</button>
+            </div>
+            
+            <div class="service-card fade-in">
+                <span class="service-icon">⚡</span>
+                <h3 class="service-title">Express Services</h3>
+                <p class="service-description">Quick professional cleaning for busy schedules.</p>
+                
+                <ul class="service-features">
+                    <li>Quick Wash & Dry - $75</li>
+                    <li>Interior Vacuum & Wipe - $60</li>
+                    <li>Tire Shine & Wheels - $40</li>
+                    <li>Window Cleaning - $30</li>
+                    <li>Dashboard Refresh - $35</li>
+                    <li>30-60 minute service time</li>
+                </ul>
+                
+                <div class="service-price">
+                    $30 - $75
+                    <div class="price-note">*Perfect for maintenance</div>
+                </div>
+                <button class="service-button" onclick="openBookingModal('Express Services')">Quick Service</button>
+            </div>
+        </div>
+
+        <!-- Free Quote Form -->
+        <div class="quote-form fade-in">
+            <h2 class="section-title" style="margin-bottom: 1rem; color: #00d4ff;">Get Your Free Quote!</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem;">Tell us about your vehicle and we'll provide a detailed estimate</p>
+            
+            <form id="quoteForm" onsubmit="submitQuote(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address1">Service Address <span class="required">*</span></label>
+                    <input type="text" id="address1" name="address1" required placeholder="Where should we come to you?">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City <span class="required">*</span></label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State <span class="required">*</span></label>
+                        <input type="text" id="state" name="state" value="OH" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="vehicle">Vehicle Year, Make, Model <span class="required">*</span></label>
+                        <input type="text" id="vehicle" name="vehicle" required placeholder="e.g., 2020 Honda Accord">
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicleType">Vehicle Type <span class="required">*</span></label>
+                        <select id="vehicleType" name="vehicleType" required>
+                            <option value="">Select vehicle type...</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Truck">Truck</option>
+                            <option value="Coupe">Coupe</option>
+                            <option value="Convertible">Convertible</option>
+                            <option value="Van">Van</option>
+                            <option value="Luxury">Luxury Vehicle</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Services You're Interested In:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="interiorClean" name="services" value="Interior Deep Clean">
+                            <label for="interiorClean">Interior Deep Clean</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="exteriorWash" name="services" value="Exterior Premium Wash">
+                            <label for="exteriorWash">Exterior Premium Wash</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="completePackage" name="services" value="Complete Detail Package">
+                            <label for="completePackage">Complete Detail Package</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="engineBay" name="services" value="Engine Bay Cleaning">
+                            <label for="engineBay">Engine Bay Cleaning</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="headlight" name="services" value="Headlight Restoration">
+                            <label for="headlight">Headlight Restoration</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="ceramic" name="services" value="Ceramic Coating">
+                            <label for="ceramic">Ceramic Coating</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="protection" name="services" value="Protection Package">
+                            <label for="protection">Protection Package</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="express" name="services" value="Express Service">
+                            <label for="express">Express Service</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="vehicleCondition">Vehicle Condition</label>
+                        <select id="vehicleCondition" name="vehicleCondition">
+                            <option value="">Select condition...</option>
+                            <option value="Excellent">Excellent - Well maintained</option>
+                            <option value="Good">Good - Minor dirt/wear</option>
+                            <option value="Fair">Fair - Needs attention</option>
+                            <option value="Poor">Poor - Heavily soiled</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="urgency">When do you need service?</label>
+                        <select id="urgency" name="urgency">
+                            <option value="">Select timeframe...</option>
+                            <option value="ASAP">ASAP - Within 1-2 days</option>
+                            <option value="This Week">This week</option>
+                            <option value="Next Week">Next week</option>
+                            <option value="Within Month">Within the month</option>
+                            <option value="Flexible">I'm flexible</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="preferredDate">Preferred Date & Time</label>
+                    <input type="datetime-local" id="preferredDate" name="preferredDate">
+                </div>
+
+                <div class="form-group">
+                    <label for="comments">Special Requests or Concerns</label>
+                    <textarea id="comments" name="comments" rows="4" placeholder="Pet hair, stains, specific areas of concern, special requests..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Get My FREE Quote!</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="process" class="process">
+        <div class="process-container">
+            <h2 class="section-title fade-in">How It Works</h2>
+            <p class="section-subtitle fade-in">Professional mobile detailing made simple</p>
+            
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Book Online or Call</h3>
+                    <p class="step-description">Schedule your service online, by phone, or text. Choose your date, time, and services.</p>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">We Come to You</h3>
+                    <p class="step-description">Our fully equipped mobile unit arrives at your location with professional equipment and supplies.</p>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Professional Service</h3>
+                    <p class="step-description">Our trained technicians perform your service using premium products and techniques.</p>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Enjoy Your Clean Car</h3>
+                    <p class="step-description">Relax while we work, then enjoy your professionally detailed vehicle!</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <a href="#contact" class="cta-button">Start Your Service</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us" class="why-us">
+        <div class="why-us-container">
+            <h2 class="section-title fade-in">Why Choose Amack Mobile?</h2>
+            <p class="section-subtitle fade-in">40+ years of experience meets modern convenience</p>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">🚐</span>
+                    <h3 class="feature-title">True Mobile Service</h3>
+                    <p class="feature-description">We bring everything to you - professional equipment, premium products, and skilled technicians. No need to leave your home or office.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">⭐</span>
+                    <h3 class="feature-title">Family Legacy</h3>
+                    <p class="feature-description">Founded by Charles R. Mack Jr. and led by Charles L. Mack III. Four decades of proven excellence in vehicle care.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">🛡️</span>
+                    <h3 class="feature-title">Quality Guarantee</h3>
+                    <p class="feature-description">We stand behind our work. If you're not completely satisfied, we'll make it right. Your satisfaction is our reputation.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">💎</span>
+                    <h3 class="feature-title">Premium Products</h3>
+                    <p class="feature-description">We use only professional-grade products and ceramic coatings that provide long-lasting protection and superior results.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">⚡</span>
+                    <h3 class="feature-title">Flexible Scheduling</h3>
+                    <p class="feature-description">Early morning, evening, or weekend appointments available. We work around your schedule, not the other way around.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">💰</span>
+                    <h3 class="feature-title">Fair Pricing</h3>
+                    <p class="feature-description">Transparent pricing with no hidden fees. We provide detailed estimates and honor our quotes. Quality service at honest prices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title fade-in">What Our Customers Say</h2>
+            <p class="section-subtitle fade-in">Join hundreds of satisfied customers</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial fade-in">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Incredible convenience! They came to my office and my car looked brand new when I got off work. The ceramic coating has kept it looking amazing for months."</p>
+                    <p class="testimonial-author">- Sarah M., Akron</p>
+                </div>
+                
+                <div class="testimonial fade-in">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Charles and his team are true professionals. 40+ years of experience really shows. My SUV had pet hair and stains - they made it look better than when I bought it!"</p>
+                    <p class="testimonial-author">- Mike R., Barberton</p>
+                </div>
+                
+                <div class="testimonial fade-in">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"The mobile service is a game-changer for busy parents. They detailed both our cars while the kids napped. Professional, efficient, and the results were outstanding."</p>
+                    <p class="testimonial-author">- Jennifer L., Cuyahoga Falls</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="section-title fade-in">Ready to Experience the Difference?</h2>
+            <p class="section-subtitle fade-in">Book your mobile detailing service today!</p>
+            
+            <div class="contact-options">
+                <a href="tel:234-327-2486" class="contact-card fade-in">
+                    <span class="icon">📞</span>
+                    <h3>Call Now</h3>
+                    <p>(234) 327-2486</p>
+                    <p>Mon-Fri: 8am-6pm<br>Saturday: 8am-4pm</p>
+                </a>
+                
+                <a href="sms:234-327-2486?body=Hi%20Amack%20Mobile%21%20I%27d%20like%20to%20schedule%20a%20mobile%20detailing%20service.%20Please%20contact%20me%20to%20discuss%20options." class="contact-card fade-in">
+                    <span class="icon">💬</span>
+                    <h3>Text Us</h3>
+                    <p>(234) 327-2486</p>
+                    <p>Quick response<br>Easy scheduling</p>
+                </a>
+                
+                <a href="#services" class="contact-card fade-in">
+                    <span class="icon">📝</span>
+                    <h3>Get Quote</h3>
+                    <p>Free Estimate</p>
+                    <p>Fill out our form<br>above for pricing</p>
+                </a>
+            </div>
+            
+            <div style="background: rgba(0, 212, 255, 0.1); padding: 2rem; border-radius: 15px; margin: 3rem 0; text-align: center;">
+                <h3 style="color: #00d4ff; margin-bottom: 1rem; font-size: 1.8rem;">Service Areas</h3>
+                <p style="font-size: 1.2rem; line-height: 1.6;">
+                    <strong>Primary:</strong> Akron, Barberton, Cuyahoga Falls, Stow, Hudson<br>
+                    <strong>Extended:</strong> Green, Copley, Fairlawn, Bath, Richfield<br>
+                    <em>Call us for service outside these areas - we may still be able to help!</em>
+                </p>
+            </div>
+            
+            <div style="margin-top: 3rem; text-align: center;">
+                <p style="font-size: 1.5rem; font-weight: 700; color: #00d4ff; margin-bottom: 1rem;">Ready to Get Started?</p>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Professional mobile detailing that comes to you. Quality you can trust. Results you'll love.</p>
+                <a href="tel:234-327-2486" class="cta-button">Call (234) 327-2486 Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" style="color: #00d4ff; text-align: center; margin-bottom: 2rem;"></h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Ready to book? Choose your preferred method:</p>
+            
+            <a href="tel:234-327-2486" class="contact-option">
+                📞 Call Now: (234) 327-2486
+            </a>
+            
+            <a href="sms:234-327-2486?body=Hi%20Amack%20Mobile%21%20I%27d%20like%20to%20book%20a%20mobile%20detailing%20service.%20Please%20contact%20me%20to%20schedule." class="contact-option">
+                💬 Text: (234) 327-2486
+            </a>
+        
+            <a id="emailLink" href="mailto:computerworldmoderninc@gmail.com?subject=Mobile%20Detailing%20Booking%20Request&body=Hi%20Amack%20Mobile%21%0A%0AI%27d%20like%20to%20schedule%20a%20mobile%20detailing%20service.%20Please%20contact%20me%20to%20discuss%20options%20and%20pricing.%0A%0AThank%20you%21" class="contact-option">
+                ✉️ Email Us
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Particle animation
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            if (!particlesContainer) return;
+            
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Scroll animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Service booking function
+        function openBookingModal(serviceName) {
+            const modal = document.getElementById('bookingModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const emailLink = document.getElementById('emailLink');
+            
+            modalTitle.textContent = `Book ${serviceName}`;
+            
+            const emailBody = encodeURIComponent(`Hi Amack Mobile!
+
+I'm interested in booking a ${serviceName} service at my location.
+
+Please contact me to schedule and provide pricing details.
+
+Thank you!`);
+            
+            emailLink.href = `mailto:computerworldmoderninc@gmail.com?subject=${encodeURIComponent(`Mobile Detailing - ${serviceName}`)}&body=${emailBody}`;
+            
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('bookingModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Quote form submission
+        function submitQuote(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = {};
+            
+            // Get all form data
+            for (let [key, value] of formData.entries()) {
+                if (key === 'services') {
+                    if (!data.services) data.services = [];
+                    data.services.push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Get all selected services
+            const serviceCheckboxes = document.querySelectorAll('input[name="services"]:checked');
+            const selectedServices = Array.from(serviceCheckboxes).map(cb => cb.value);
+            
+            // Create email content
+            const emailSubject = encodeURIComponent('Mobile Detailing Quote Request');
+            const emailBody = encodeURIComponent(`NEW MOBILE DETAILING QUOTE REQUEST
+
+Customer Information:
+Name: ${data.firstName} ${data.lastName}
+Phone: ${data.phone}
+Email: ${data.email}
+
+Service Address:
+${data.address1}
+${data.city}, ${data.state}
+
+Vehicle Information:
+${data.vehicle} (${data.vehicleType})
+Condition: ${data.vehicleCondition || 'Not specified'}
+
+Services Requested:
+${selectedServices.length > 0 ? selectedServices.join(', ') : 'None selected'}
+
+Service Timeframe: ${data.urgency || 'Not specified'}
+${data.preferredDate ? `Preferred Date/Time: ${data.preferredDate}` : ''}
+
+Special Requests:
+${data.comments || 'None'}
+
+Please contact this customer promptly for their mobile detailing quote!`);
+
+            // Create text message content
+            const textBody = encodeURIComponent(`Mobile Detailing Quote: ${data.firstName} ${data.lastName}, ${data.phone}. Vehicle: ${data.vehicle}. Services: ${selectedServices.join(', ')}. Address: ${data.city}. Please follow up!`);
+            
+            // Show options modal for submission
+            showSubmissionOptions(emailSubject, emailBody, textBody);
+        }
+
+        function showSubmissionOptions(emailSubject, emailBody, textBody) {
+            const modal = document.getElementById('bookingModal');
+            const modalContent = modal.querySelector('.modal-content');
+            
+            modalContent.innerHTML = `
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 style="color: #00d4ff; text-align: center; margin-bottom: 2rem;">Quote Request Ready!</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">Your mobile detailing quote has been prepared. How would you like to send it?</p>
+                
+                <a href="mailto:computerworldmoderninc@gmail.com?subject=${emailSubject}&body=${emailBody}" class="contact-option">
+                    ✉️ Send via Email
+                </a>
+                
+                <a href="sms:234-327-2486?body=${textBody}" class="contact-option">
+                    💬 Send via Text
+                </a>
+                
+                <a href="tel:234-327-2486" class="contact-option">
+                    📞 Call to Discuss: (234) 327-2486
+                </a>
+                
+                <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: rgba(0, 212, 255, 0.1); border-radius: 10px;">
+                    <p style="color: #00d4ff; font-weight: bold; font-size: 1.1rem;">We'll contact you within 4 hours!</p>
+                    <p style="font-size: 1rem; opacity: 0.8; margin-top: 0.5rem;">Professional mobile detailing service delivered to your location</p>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+            
+            // Reset form
+            document.getElementById('quoteForm').reset();
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Initialize animations
+        window.addEventListener('load', () => {
+            createParticles();
+            handleScrollAnimations();
+        });
+
+        window.addEventListener('scroll', handleScrollAnimations);
+
+        // Navigation background change on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
